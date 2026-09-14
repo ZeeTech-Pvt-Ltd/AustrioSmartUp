@@ -48,11 +48,23 @@ export default function App() {
   const [searchParams] = useSearchParams()
   const f = searchParams.get('f')?.trim() || ''
   const subid = searchParams.get('subid')?.trim() || ''
-  const brand = f ? displayName(f) : SITE_NAME
+  // Canonical keyword: hyphens in the URL (never %20), spaces on the page.
+  const keyword = f.replaceAll(' ', '-')
+  const brand = keyword ? displayName(keyword) : SITE_NAME
+
+  // If a visitor lands with spaces in ?f=, rewrite the address bar to the
+  // hyphenated form so the URL reads ?f=Vinty-AI instead of ?f=Vinty%20AI.
+  useEffect(() => {
+    if (f && f !== keyword) {
+      const params = new URLSearchParams(searchParams)
+      params.set('f', keyword)
+      window.history.replaceState(null, '', `?${params.toString()}`)
+    }
+  }, [f, keyword, searchParams])
 
   // Each keyword lands on the same page: brand display and offerName both
   // follow the ?f= param, so leads are tagged per keyword.
-  const campaign = { brand, offerName: f || DEFAULT_OFFER_NAME, subid }
+  const campaign = { brand, offerName: keyword || DEFAULT_OFFER_NAME, subid }
 
   useEffect(() => {
     document.title = `${brand} - Smart Trading Made Simple`
