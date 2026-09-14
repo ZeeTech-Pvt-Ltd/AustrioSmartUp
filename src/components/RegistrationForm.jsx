@@ -275,9 +275,10 @@ export default function RegistrationForm({ idPrefix = 'reg', title }) {
             required
           />
           <span>
-            I am over 18 and I accept the <a href="/terms" target="_blank" rel="noreferrer">Terms of Use</a>,{' '}
-            <a href="/privacy" target="_blank" rel="noreferrer">Privacy Policy</a> and{' '}
-            <a href="/risk-disclosure" target="_blank" rel="noreferrer">Risk Disclaimer</a>. *
+            By registering, you confirm that you are over 18 years old and agree to the{' '}
+            <a href="/terms" target="_blank" rel="noreferrer">Terms of Use</a>,{' '}
+            <a href="/privacy" target="_blank" rel="noreferrer">Privacy Policy</a>, and{' '}
+            <a href="/risk-disclosure" target="_blank" rel="noreferrer">Risk Disclaimer</a>.
           </span>
         </label>
 
