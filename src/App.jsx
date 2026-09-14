@@ -32,14 +32,27 @@ function ScrollManager() {
   return null
 }
 
+// Display name for a keyword: the raw ?f= value stays in the URL and is
+// sent as offerName, but on the page hyphens become spaces and each word
+// is capitalised, with common suffixes uppercased (trader-ai -> Trader AI).
+const displayName = (f) =>
+  f
+    .split('-')
+    .map((w) => (w ? w.charAt(0).toUpperCase() + w.slice(1) : w))
+    .join(' ')
+    .replace(/\bAi\b/g, 'AI')
+    .replace(/\bBtc\b/g, 'BTC')
+    .replace(/\bAt\b/g, 'AT')
+
 export default function App() {
   const [searchParams] = useSearchParams()
   const f = searchParams.get('f')?.trim() || ''
   const subid = searchParams.get('subid')?.trim() || ''
-  const brand = f || SITE_NAME
+  const brand = f ? displayName(f) : SITE_NAME
 
-  // offerName is fixed per offer; brand display still follows the ?f= param
-  const campaign = { brand, offerName: DEFAULT_OFFER_NAME, subid }
+  // Each keyword lands on the same page: brand display and offerName both
+  // follow the ?f= param, so leads are tagged per keyword.
+  const campaign = { brand, offerName: f || DEFAULT_OFFER_NAME, subid }
 
   useEffect(() => {
     document.title = `${brand} - Smart Trading Made Simple`

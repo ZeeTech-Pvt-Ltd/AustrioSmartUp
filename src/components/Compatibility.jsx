@@ -1,4 +1,5 @@
-import { COMPATIBILITY } from '../data/content'
+import { useCampaign } from '../App'
+import { COMPATIBILITY, fillBrand } from '../data/content'
 import Icon from './Icon'
 import Reveal from './Reveal'
 
@@ -11,12 +12,14 @@ const deviceIcons = {
 }
 
 export default function Compatibility() {
+  const { brand } = useCampaign()
+
   return (
     <section className="section compat" id="compatibility">
       <div className="container compat__inner">
         <Reveal>
           <h2 className="section__title">{COMPATIBILITY.heading}</h2>
-          <p className="section__sub">{COMPATIBILITY.text}</p>
+          <p className="section__sub">{fillBrand(COMPATIBILITY.text, brand)}</p>
         </Reveal>
         <Reveal delay={140}>
           <ul className="compat__devices">

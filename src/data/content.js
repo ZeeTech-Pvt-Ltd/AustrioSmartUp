@@ -11,6 +11,10 @@ export const SITE_URL = 'http://austerio-smart-up.com/'
 export const SUPPORT_EMAIL = 'support@austerio-smart-up.com'
 export const COPYRIGHT_YEAR = new Date().getFullYear()
 
+// Copy containing the {brand} token renders the active keyword (the ?f=
+// param value, or SITE_NAME when absent) in its place.
+export const fillBrand = (text, brand) => text.replaceAll('{brand}', brand)
+
 // Registration forms POST JSON to this CORS-open endpoint. The offer
 // name and subid are taken from the ?f= and &subid= query params so
 // every traffic source is tagged through to the lead pipeline.
@@ -20,7 +24,7 @@ export const DEFAULT_OFFER_NAME = 'SkvivrelanATOM'
 export const HERO = {
   eyebrow: 'A new way to grow your capital',
   title: ['Markets never sleep. ', 'Neither should your earnings.'],
-  lede: 'SkvivrelanATOM watches the global markets around the clock and spots the setups worth acting on. You register, your personal manager walks you through your first deposit, and the software does the heavy lifting from there.',
+  lede: '{brand} watches the global markets around the clock and spots the setups worth acting on. You register, your personal manager walks you through your first deposit, and the software does the heavy lifting from there.',
   bullets: [
     'Free registration - no card required',
     'A dedicated manager calls you back',
@@ -50,7 +54,7 @@ export const STEPS = {
 }
 
 export const WHY = {
-  heading: 'Why is SkvivrelanATOM so successful?',
+  heading: 'Why is {brand} so successful?',
   items: [
     {
       icon: 'algorithm',
@@ -65,14 +69,14 @@ export const WHY = {
     {
       icon: 'patterns',
       title: 'Works with Patterns',
-      text: 'Markets repeat themselves. SkvivrelanATOM recognises the patterns that have paid off before and executes when they line up.',
+      text: 'Markets repeat themselves. {brand} recognises the patterns that have paid off before and executes when they line up.',
     },
   ],
 }
 
 export const COMPATIBILITY = {
   heading: 'Works on every device',
-  text: 'Windows, macOS, iOS or Android - if it has a browser, SkvivrelanATOM runs on it. No downloads, no installation, no maintenance.',
+  text: 'Windows, macOS, iOS or Android - if it has a browser, {brand} runs on it. No downloads, no installation, no maintenance.',
   devices: ['Windows', 'macOS', 'iOS', 'Android', 'Linux'],
 }
 
@@ -123,7 +127,7 @@ export const FAQ = {
     },
     {
       q: 'Do I need trading experience?',
-      a: 'No. SkvivrelanATOM was designed for people with no prior experience. Your manager guides you through setup and your first session.',
+      a: 'No. {brand} was designed for people with no prior experience. Your manager guides you through setup and your first session.',
     },
     {
       q: 'Which devices are supported?',

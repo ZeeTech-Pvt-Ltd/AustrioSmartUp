@@ -1,5 +1,5 @@
 import { useCampaign } from '../App'
-import { HERO } from '../data/content'
+import { HERO, fillBrand } from '../data/content'
 import Icon from './Icon'
 import RegistrationForm from './RegistrationForm'
 import Reveal from './Reveal'
@@ -19,7 +19,7 @@ export default function Hero() {
               {HERO.title[0]}
               <span className="grad-text">{HERO.title[1]}</span>
             </h1>
-            <p className="hero__lede">{HERO.lede}</p>
+            <p className="hero__lede">{fillBrand(HERO.lede, brand)}</p>
           </Reveal>
 
           <Reveal delay={120}>

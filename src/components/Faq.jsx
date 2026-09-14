@@ -1,9 +1,11 @@
 import { useState } from 'react'
-import { FAQ } from '../data/content'
+import { useCampaign } from '../App'
+import { FAQ, fillBrand } from '../data/content'
 import Icon from './Icon'
 import Reveal from './Reveal'
 
 export default function Faq() {
+  const { brand } = useCampaign()
   const [openIndex, setOpenIndex] = useState(0)
 
   return (
@@ -28,7 +30,7 @@ export default function Faq() {
                     <Icon name="chevron-down" size={18} className="faq__chevron" />
                   </button>
                   <div className="faq__a" hidden={!isOpen}>
-                    <p>{item.a}</p>
+                    <p>{fillBrand(item.a, brand)}</p>
                   </div>
                 </div>
               </Reveal>
