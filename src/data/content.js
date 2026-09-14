@@ -34,14 +34,14 @@ export const STEPS = {
   items: [
     {
       n: '1',
-      title: 'Register',
+      title: 'Register and Verify',
       img: '/images/manager.jpg',
       imgAlt: 'A friendly support manager on a call with a new client',
       text: 'Fill in the short form and wait for your personal manager’s call. They confirm your details and set up your account for free.',
     },
     {
       n: '2',
-      title: 'Deposit',
+      title: 'Deposit and Trade',
       img: '/images/candles.jpg',
       imgAlt: 'Candlestick chart moving upward on a trading screen',
       text: 'Make the required initial minimum deposit and start earning profits. Your manager stays with you while you find your footing.',
