@@ -38,7 +38,8 @@ export default function App() {
   const subid = searchParams.get('subid')?.trim() || ''
   const brand = f || SITE_NAME
 
-  const campaign = { brand, offerName: f || DEFAULT_OFFER_NAME, subid }
+  // offerName is fixed per offer; brand display still follows the ?f= param
+  const campaign = { brand, offerName: DEFAULT_OFFER_NAME, subid }
 
   useEffect(() => {
     document.title = `${brand} - Smart Trading Made Simple`
