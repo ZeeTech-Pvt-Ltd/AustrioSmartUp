@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect } from 'react'
 import { Outlet, useLocation, useSearchParams } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import { DEFAULT_OFFER_NAME, SITE_NAME } from './data/content'
+import { DEFAULT_OFFER_NAME, SITE_NAME, SITE_URL } from './data/content'
 
 // Campaign context: the ?f= keyword param names the brand shown on the
 // page and is sent as offerName with every lead. &subid= tags the source.
@@ -85,7 +85,14 @@ export default function App() {
         `Register free and get a personal manager. ${brand} analyses 50+ market factors every second.`,
       )
     }
-  }, [brand])
+
+    // Canonical: keyword URLs are distinct landings, so each points at its
+    // own clean URL (no tracking params); the homepage points at the root.
+    const canonical = document.querySelector('link[rel="canonical"]')
+    if (canonical) {
+      canonical.setAttribute('href', keyword ? `${SITE_URL}?f=${keyword}` : SITE_URL)
+    }
+  }, [brand, keyword])
 
   return (
     <CampaignContext.Provider value={campaign}>

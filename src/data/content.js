@@ -7,7 +7,7 @@
  */
 
 export const SITE_NAME = 'Austrio Smart Up'
-export const SITE_URL = 'http://austerio-smart-up.com/'
+export const SITE_URL = 'https://austerio-smart-up.com/'
 export const SUPPORT_EMAIL = 'support@austerio-smart-up.com'
 export const COPYRIGHT_YEAR = new Date().getFullYear()
 

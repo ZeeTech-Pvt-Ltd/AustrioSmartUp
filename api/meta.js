@@ -52,6 +52,14 @@ export default async function handler(req, res) {
     `<meta property="og:site_name" content="${brand}" />`,
   )
 
+  // Canonical: keyword URLs are distinct landings, so each points at its
+  // own clean URL (no tracking params); the homepage points at the root.
+  const canonical = f ? `${url.origin}/?f=${f}` : `${url.origin}/`
+  html = html.replace(
+    /<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/,
+    `<link rel="canonical" href="${canonical}" />`,
+  )
+
   res.setHeader('Cache-Control', 'public, max-age=0, s-maxage=3600')
   res.setHeader('Content-Type', 'text/html; charset=utf-8')
   res.status(200).send(html)
