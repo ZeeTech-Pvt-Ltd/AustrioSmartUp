@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import 'intl-tel-input/styles'
 import Icon from './Icon'
 import { useCampaign } from '../App'
@@ -46,6 +46,7 @@ async function resolveCountry() {
  */
 export default function RegistrationForm({ idPrefix = 'reg', title }) {
   const navigate = useNavigate()
+  const location = useLocation()
   const { offerName, subid } = useCampaign()
   const [fields, setFields] = useState(initialFields)
   const [status, setStatus] = useState(STATUS.idle)
@@ -184,7 +185,9 @@ export default function RegistrationForm({ idPrefix = 'reg', title }) {
       setStatus(STATUS.success)
       setFields(initialFields)
       iti?.setNumber('')
-      navigate('/thank-you')
+      // Carry the ?f= and &subid= params so the thank-you page shows the
+      // keyword this form was submitted for.
+      navigate(`/thank-you${location.search}`)
     } catch {
       // Endpoint rate-limits to 3 attempts / 5 min per IP.
       setStatus(STATUS.error)
