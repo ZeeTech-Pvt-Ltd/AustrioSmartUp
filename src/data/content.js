@@ -6,7 +6,7 @@
  * wording is original, not scraped. Legal pages are template text.
  */
 
-export const SITE_NAME = 'SkvivrelanATOM'
+export const SITE_NAME = 'Austrio Smart Up'
 export const SITE_URL = 'http://austerio-smart-up.com/'
 export const SUPPORT_EMAIL = 'support@austerio-smart-up.com'
 export const COPYRIGHT_YEAR = new Date().getFullYear()

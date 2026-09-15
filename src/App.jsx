@@ -68,6 +68,23 @@ export default function App() {
 
   useEffect(() => {
     document.title = `${brand} - Smart Trading Made Simple`
+
+    // Meta descriptions follow the active keyword too, so each landing
+    // URL carries its own SEO text (homepage falls back to Austrio Smart Up).
+    const desc = document.querySelector('meta[name="description"]')
+    if (desc) {
+      desc.setAttribute(
+        'content',
+        `${brand} analyses global markets in real time and shows you when to enter. Register free, talk to a personal manager, and start your first trade.`,
+      )
+    }
+    const og = document.querySelector('meta[property="og:description"]')
+    if (og) {
+      og.setAttribute(
+        'content',
+        `Register free and get a personal manager. ${brand} analyses 50+ market factors every second.`,
+      )
+    }
   }, [brand])
 
   return (
