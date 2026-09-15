@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://austerio-smart-up.com/sitemap.xml

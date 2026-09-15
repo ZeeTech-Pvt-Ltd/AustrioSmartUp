@@ -60,6 +60,20 @@ export default async function handler(req, res) {
     `<link rel="canonical" href="${canonical}" />`,
   )
 
+  // og:url and twitter tags follow the keyword for social previews.
+  html = html.replace(
+    /<meta\s+property="og:url"\s+content="[^"]*"\s*\/>/,
+    `<meta property="og:url" content="${canonical}" />`,
+  )
+  html = html.replace(
+    /<meta\s+name="twitter:title"\s+content="[^"]*"\s*\/>/,
+    `<meta name="twitter:title" content="${title}" />`,
+  )
+  html = html.replace(
+    /<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/>/,
+    `<meta name="twitter:description" content="${ogDescription}" />`,
+  )
+
   res.setHeader('Cache-Control', 'public, max-age=0, s-maxage=3600')
   res.setHeader('Content-Type', 'text/html; charset=utf-8')
   res.status(200).send(html)

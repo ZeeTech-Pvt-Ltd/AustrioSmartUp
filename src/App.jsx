@@ -92,6 +92,21 @@ export default function App() {
     if (canonical) {
       canonical.setAttribute('href', keyword ? `${SITE_URL}?f=${keyword}` : SITE_URL)
     }
+
+    // og:url and twitter tags follow the keyword for social previews.
+    const ogUrl = document.querySelector('meta[property="og:url"]')
+    if (ogUrl) {
+      ogUrl.setAttribute('content', keyword ? `${SITE_URL}?f=${keyword}` : SITE_URL)
+    }
+    const twTitle = document.querySelector('meta[name="twitter:title"]')
+    if (twTitle) twTitle.setAttribute('content', `${brand} - Smart Trading Made Simple`)
+    const twDesc = document.querySelector('meta[name="twitter:description"]')
+    if (twDesc) {
+      twDesc.setAttribute(
+        'content',
+        `Register free and get a personal manager. ${brand} analyses 50+ market factors every second.`,
+      )
+    }
   }, [brand, keyword])
 
   return (
