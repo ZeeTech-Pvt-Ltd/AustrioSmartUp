@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect } from 'react'
 import { Outlet, useLocation, useSearchParams } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import { DEFAULT_OFFER_NAME, SITE_NAME, SITE_URL } from './data/content'
+import { DEFAULT_OFFER_NAME, SITE_NAME } from './data/content'
 
 // Campaign context: the ?f= keyword param names the brand shown on the
 // page and is sent as offerName with every lead. &subid= tags the source.
@@ -86,18 +86,12 @@ export default function App() {
       )
     }
 
-    // Canonical: keyword URLs are distinct landings, so each points at its
-    // own clean URL (no tracking params); the homepage points at the root.
+    // Canonical and og:url are self-referencing: exactly the visited URL,
+    // so SEO audits never flag the page as canonicalised elsewhere.
     const canonical = document.querySelector('link[rel="canonical"]')
-    if (canonical) {
-      canonical.setAttribute('href', keyword ? `${SITE_URL}?f=${keyword}` : SITE_URL)
-    }
-
-    // og:url and twitter tags follow the keyword for social previews.
+    if (canonical) canonical.setAttribute('href', window.location.href)
     const ogUrl = document.querySelector('meta[property="og:url"]')
-    if (ogUrl) {
-      ogUrl.setAttribute('content', keyword ? `${SITE_URL}?f=${keyword}` : SITE_URL)
-    }
+    if (ogUrl) ogUrl.setAttribute('content', window.location.href)
     const twTitle = document.querySelector('meta[name="twitter:title"]')
     if (twTitle) twTitle.setAttribute('content', `${brand} - Smart Trading Made Simple`)
     const twDesc = document.querySelector('meta[name="twitter:description"]')

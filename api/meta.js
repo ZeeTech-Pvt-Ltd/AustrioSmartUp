@@ -52,9 +52,12 @@ export default async function handler(req, res) {
     `<meta property="og:site_name" content="${brand}" />`,
   )
 
-  // Canonical: keyword URLs are distinct landings, so each points at its
-  // own clean URL (no tracking params); the homepage points at the root.
-  const canonical = f ? `${url.origin}/?f=${f}` : `${url.origin}/`
+  // Canonical and og:url are self-referencing: exactly the visited URL
+  // (including any tracking params), so SEO audits never flag the page
+  // as canonicalised elsewhere. Via the rewrite the function's pathname
+  // is /api/meta, so fall back to "/" for the canonical path.
+  const path = url.pathname === '/api/meta' ? '/' : url.pathname
+  const canonical = `${url.origin}${path}${url.search}`
   html = html.replace(
     /<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/,
     `<link rel="canonical" href="${canonical}" />`,
