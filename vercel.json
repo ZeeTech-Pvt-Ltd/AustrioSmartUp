@@ -2,6 +2,6 @@
   "rewrites": [
     { "source": "/", "destination": "/api/meta" },
     { "source": "/thank-you", "destination": "/api/meta" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/(.*)", "destination": "/app.html" }
   ]
 }

@@ -21,9 +21,11 @@ export default async function handler(req, res) {
   const f = (url.searchParams.get('f') || '').trim().replaceAll(' ', '-')
   const brand = f ? displayName(f) : 'Austrio Smart Up'
 
-  const indexRes = await fetch(`${url.origin}/index.html`)
+  // The entry is app.html (see scripts/postbuild.mjs) so that "/" is not
+  // shadowed by a filesystem match and this function can run for it.
+  const indexRes = await fetch(`${url.origin}/app.html`)
   if (!indexRes.ok) {
-    res.status(502).send('index.html unavailable')
+    res.status(502).send('app.html unavailable')
     return
   }
   let html = await indexRes.text()
