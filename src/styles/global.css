@@ -1162,6 +1162,12 @@ button {
 }
 
 @media (max-width: 720px) {
+  /* Smaller hero background for mobile screens: 17KB instead of 219KB. */
+  .hero {
+    background:
+      linear-gradient(rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.94)),
+      url('/images/hero-bg-mobile.jpg') center / cover no-repeat;
+  }
   .steps__grid {
     grid-template-columns: 1fr;
   }
