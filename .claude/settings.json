@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -o /dev/null -w \"test server: %{http_code}\\\\n\" http://localhost:8791/)",
+      "Bash(npx --yes lighthouse \"http://localhost:8791/\" --chrome-path=\"C:/Program Files/Google/Chrome/Application/chrome.exe\" --form-factor=mobile --only-categories=performance --output=json --output-path=/c/tmp/lh-after.json --quiet)",
+      "Read(//c/tmp/**)",
+      "Bash(node -e ' *)"
+    ]
+  }
+}

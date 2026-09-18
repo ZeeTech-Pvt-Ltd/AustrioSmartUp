@@ -52,8 +52,9 @@
       }
     </script>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K9HTMEEWQH"></script>
+    <!-- Google tag (gtag.js). The 170 KB script loads on first interaction
+         (or after a 15 s fallback) so analytics never competes with first
+         paint - page_view still fires for every real visitor. -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -62,12 +63,45 @@
       gtag('js', new Date());
 
       gtag('config', 'G-K9HTMEEWQH');
+
+      let gtagLoaded = false;
+      const loadGtag = () => {
+        if (gtagLoaded) return;
+        gtagLoaded = true;
+        const s = document.createElement('script');
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-K9HTMEEWQH';
+        s.async = true;
+        document.head.appendChild(s);
+        ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach((e) =>
+          window.removeEventListener(e, loadGtag),
+        );
+      };
+      ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach((e) =>
+        window.addEventListener(e, loadGtag, { once: true, passive: true }),
+      );
+      setTimeout(loadGtag, 15000);
     </script>
 
     <!-- Fonts: Space Grotesk (display) + Inter (body) - onyx emerald palette.
          Loaded non-blocking so the stylesheet doesn't delay first paint. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Fetch the two latin variable fonts in parallel with the CSS so the
+         text can swap earlier - these URLs are served by the css2 request. -->
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      crossorigin
+      href="https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4C_k3HqU.woff2"
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      crossorigin
+      href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2"
+    />
     <link
       rel="preload"
       as="style"
