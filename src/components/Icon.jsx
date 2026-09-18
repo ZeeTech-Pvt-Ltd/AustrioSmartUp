@@ -80,6 +80,9 @@ const paths = {
       <path d="M3 20h18" />
     </>
   ),
+  user: <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm7 8a7 7 0 0 0-14 0" />,
+  wallet: <path d="M3 9.5 12 4l9 5.5M5 11v6.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V11m-11 4h4v4.5" />,
+  chart: <path d="M3 17 8 11l4 4 6-8m0 0h-4m4 0v4" />,
 }
 
 export default function Icon({ name, size = 20, strokeWidth = 1.8, className = '' }) {

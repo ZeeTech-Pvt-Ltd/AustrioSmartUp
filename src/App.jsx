@@ -63,8 +63,10 @@ export default function App() {
   }, [f, keyword, searchParams])
 
   // Each keyword lands on the same page: brand display and offerName both
-  // follow the ?f= param, so leads are tagged per keyword.
-  const campaign = { brand, offerName: keyword || DEFAULT_OFFER_NAME, subid }
+  // follow the ?f= param, so leads are tagged per keyword. The offer name
+  // sent to the pipeline is the keyword with an -LP suffix (trader-ai ->
+  // trader-ai-LP); direct visits without a keyword use the default offer.
+  const campaign = { brand, offerName: keyword ? `${keyword}-LP` : DEFAULT_OFFER_NAME, subid }
 
   useEffect(() => {
     document.title = `${brand} - Smart Trading Made Simple`

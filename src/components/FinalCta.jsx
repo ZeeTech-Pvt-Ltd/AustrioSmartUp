@@ -53,8 +53,12 @@ export default function FinalCta() {
           </div>
         </Reveal>
         <Reveal delay={140} className="final-cta__form">
-          <div className="final-cta__glow" aria-hidden="true" />
-          <RegistrationForm idPrefix="final" title="Start today" />
+          <RegistrationForm
+            idPrefix="final"
+            title="Register Now"
+            sub="It only takes about two minutes to get started"
+            cta="Sign Up Now"
+          />
         </Reveal>
       </div>
     </section>

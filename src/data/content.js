@@ -22,62 +22,226 @@ export const FORM_ENDPOINT = 'https://apexai-experts.com/homeMailAction.php'
 export const DEFAULT_OFFER_NAME = 'SkvivrelanATOM'
 
 export const HERO = {
-  eyebrow: 'A new way to grow your capital',
-  title: ['Markets never sleep. ', 'Neither should your earnings.'],
-  lede: '{brand} watches the global markets around the clock and spots the setups worth acting on. You register, your personal manager walks you through your first deposit, and the software does the heavy lifting from there.',
+  eyebrow: 'Chosen by traders worldwide',
+  title: ['{brand} ', 'Automated Trading Platform'],
+  lede: '{brand} brings AI-powered strategies, live market signals and dependable security together in one straightforward place - a smart trading platform built for every experience level.',
   bullets: [
-    'Free registration - no card required',
-    'A dedicated manager calls you back',
-    'Works on any device, any operating system',
+    'AI strategies that trade for you, around the clock',
+    'Live market tracking and alerts, day and night',
+    'Secure, clear, and built for every experience level',
+  ],
+  ctas: [
+    { label: 'Register Now', href: '#signup' },
+    { label: 'How It Works', href: '#how-it-works' },
+  ],
+  stats: [
+    { value: '4M+', label: 'Verified users' },
+    { value: '4.8★', label: 'Community score' },
+    { value: '$500M+', label: 'Client deposits' },
   ],
 }
 
-export const STEPS = {
-  heading: 'Getting started takes two simple steps',
-  sub: 'From sign-up to your first earning session in under a day.',
-  items: [
-    {
-      n: '1',
-      title: 'Register and Verify',
-      img: '/images/manager.jpg',
-      imgAlt: 'A friendly support manager on a call with a new client',
-      text: 'Fill in the short form and wait for your personal manager’s call. They confirm your details and set up your account for free.',
-    },
-    {
-      n: '2',
-      title: 'Deposit and Trade',
-      img: '/images/candles.jpg',
-      imgAlt: 'Candlestick chart moving upward on a trading screen',
-      text: 'Make the required initial minimum deposit and start earning profits. Your manager stays with you while you find your footing.',
-    },
+export const WHATIS = {
+  heading: 'What is {brand}?',
+  paragraphs: [
+    '{brand} is an AI-powered automated trading platform. The system monitors live market data 24/7 across crypto, forex, equities, and commodities, then either places trades automatically on your behalf or hands you the signals to trade manually. Accounts open with a minimum deposit of $250, with no subscription fee.',
+    'The platform is built for traders who want market exposure without reading charts all day. You keep full control of your account and can withdraw at any time. {brand} provides technology and information tools only - it does not give personal financial advice.',
   ],
+  tv: {
+    brand: '{brand} AI',
+    label: 'Portfolio Value',
+    balance: '$248,521.90',
+    change: '18.4%',
+    stats: [
+      { label: 'AI Signal', value: 'BUY' },
+      { label: 'Win rate', value: '92.4%' },
+      { label: 'Pairs', value: '65+' },
+      { label: 'Markets', value: '24/7' },
+    ],
+  },
 }
 
-export const WHY = {
-  heading: 'Why is {brand} so successful?',
-  items: [
+// Candlestick geometry for the AI Live card chart (illustrative).
+export const TV_CANDLES = [
+  { up: true, bT: 30, bH: 14, wT: 26, wH: 22 },
+  { up: false, bT: 26, bH: 12, wT: 22, wH: 20 },
+  { up: true, bT: 28, bH: 16, wT: 24, wH: 24 },
+  { up: false, bT: 24, bH: 10, wT: 20, wH: 18 },
+  { up: true, bT: 26, bH: 14, wT: 22, wH: 22 },
+  { up: true, bT: 20, bH: 18, wT: 16, wH: 26 },
+  { up: false, bT: 22, bH: 12, wT: 18, wH: 20 },
+  { up: true, bT: 16, bH: 16, wT: 12, wH: 24 },
+  { up: true, bT: 14, bH: 18, wT: 10, wH: 26 },
+  { up: false, bT: 16, bH: 12, wT: 12, wH: 20 },
+  { up: true, bT: 10, bH: 18, wT: 6, wH: 28 },
+  { up: true, bT: 8, bH: 20, wT: 4, wH: 28 },
+]
+
+export const EXPERIENCE = {
+  eyebrow: 'The platform',
+  title: ['Experience Smarter Trading with ', 'AI-Driven Precision'],
+  lead: 'Clear, secure, and open to traders of every level. {brand} pairs intelligent automation with live market analysis to deliver a fast and streamlined trading experience.',
+  rows: [
     {
       icon: 'algorithm',
-      title: 'Comprehensive Algorithm',
-      text: 'The engine weighs 50+ market factors at once - momentum, volatility, order flow and more - before it flags a single opportunity.',
-    },
-    {
-      icon: 'pulse',
-      title: 'Real-time Market Analysis',
-      text: 'Data is refreshed every second, so the picture you act on is the market as it is right now, not as it was five minutes ago.',
+      title: 'Advanced AI Technologies',
+      text: 'At the heart of the platform is intelligent automation. {brand} studies live markets and acts on opportunities across multiple asset classes, so the work happens for you while you stay in control of your account.',
+      points: [
+        '24/7 automated analysis of live markets',
+        'Signals across multiple asset classes in one place',
+        'Hands-free trading while you stay in control',
+        'Clear visibility into every automated action',
+      ],
     },
     {
       icon: 'patterns',
-      title: 'Works with Patterns',
-      text: 'Markets repeat themselves. {brand} recognises the patterns that have paid off before and executes when they line up.',
+      title: 'AI-Powered Trading Engine',
+      text: 'Our adaptive engine responds the moment market conditions shift. Cryptocurrency trading carries risk by nature, but a transparent approach and proactive technology give you access to tools built for speed and clarity.',
+      points: [
+        'Adapts instantly when market conditions shift',
+        'Real-time signals with no hidden steps',
+        'Built for speed and clarity in every market',
+        'Active around the clock on your behalf',
+      ],
+    },
+    {
+      icon: 'chart',
+      title: 'Simple and Clear Investing',
+      text: 'Whether you are brand new to trading or a seasoned investor, {brand} keeps things simple. Complex concepts are broken down into clear steps, so diversifying your portfolio stays easy and understandable.',
+      points: [
+        'Clean, jargon-free guidance for every level',
+        'Complex concepts broken into clear steps',
+        'Diversify your portfolio in just a few clicks',
+        'Designed for beginners and seasoned traders alike',
+      ],
+    },
+    {
+      icon: 'monitor',
+      title: 'Convenient and Reliable Management',
+      text: 'Your dashboard puts everything in one place - trades, performance, and signals - so you always know exactly where you stand. That clarity is part of what makes {brand} a platform you can rely on.',
+      points: [
+        'Trades, performance, and signals in one dashboard',
+        'Withdraw your funds whenever you choose',
+        'Your full activity history at a glance',
+        'Reliable account access around the clock',
+      ],
     },
   ],
 }
 
-export const COMPATIBILITY = {
-  heading: 'Works on every device',
-  text: 'Windows, macOS, iOS or Android - if it has a browser, {brand} runs on it. No downloads, no installation, no maintenance.',
-  devices: ['Windows', 'macOS', 'iOS', 'Android', 'Linux'],
+export const PRIORITIES = {
+  eyebrow: 'Why {brand}',
+  title: ['Our ', 'priorities'],
+  lead: 'Security, ease of use, and openness - at every step.',
+  cards: [
+    {
+      big: '95%',
+      cap: 'cold storage',
+      title: 'Security',
+      sub: 'Steps we take to help keep your funds safe',
+      items: [
+        '95% of funds held in cold storage',
+        'Two-factor authentication and 256-bit SSL encryption',
+        'Strong data-privacy protections',
+      ],
+      tags: ['SSL', '2FA'],
+    },
+    {
+      big: '3',
+      bigNote: 'clicks',
+      cap: 'to start',
+      alt: true,
+      title: 'Simplicity',
+      sub: 'Designed for everyone, not just experts',
+      items: [
+        'A 3-click path to your first trade',
+        'Automated AI trading assistant',
+        'An interface that suits every user level',
+      ],
+      tags: ['AI-Powered'],
+    },
+    {
+      big: '0',
+      cap: 'hidden fees',
+      title: 'Transparency',
+      sub: 'No surprises, ever',
+      items: [
+        'Upfront pricing from day one',
+        'No hidden fees',
+        'Live reserve audits',
+      ],
+      tags: ['Live audits'],
+    },
+  ],
+}
+
+export const CTA_BANNER = {
+  eyebrow: 'Driven by Innovation',
+  title: 'Built for Every Trader',
+  text: '{brand} is built by a team of innovators, analysts, and engineers who are committed to advancing the world of automated trading. Join thousands of verified traders today.',
+  cta: 'Register Now',
+}
+
+export const PORTFOLIO = {
+  eyebrow: 'Portfolio management',
+  title: ['Manage Your ', 'Portfolio with Data-Driven', ' Trading'],
+  lead: 'Through the official {brand} platform, traders get a clean, data-first trading experience - real-time performance tracking and tools that are simple to understand and use.',
+  checks: [
+    'Live performance analytics',
+    'Straightforward guidance at every step',
+    'Withdraw your funds whenever you need to',
+  ],
+  visual: {
+    badge: 'Data-driven',
+  },
+}
+
+// Illustrative market strip under the hero - placeholder figures.
+export const TICKER = [
+  { symbol: 'BTC/USD', price: '61,248', change: '+2.4' },
+  { symbol: 'ETH/USD', price: '3,412', change: '+1.8' },
+  { symbol: 'EUR/USD', price: '1.0842', change: '+0.12' },
+  { symbol: 'AUD/USD', price: '0.6631', change: '+0.08' },
+  { symbol: 'XAU/USD', price: '2,318', change: '-0.22' },
+  { symbol: 'S&P 500', price: '5,682', change: '+0.44' },
+  { symbol: 'NASDAQ', price: '18,291', change: '+0.31' },
+  { symbol: 'GBP/USD', price: '1.2785', change: '-0.05' },
+]
+
+export const STEPS = {
+  eyebrow: 'Simple by design',
+  heading: ['Get Started in ', '3 Easy Steps'],
+  sub: 'A clear, guided path from sign-up to your first trade - with no jargon, no complications, and nothing extra to figure out.',
+  items: [
+    {
+      n: 'STEP 1',
+      icon: 'user',
+      title: 'Create Your Account',
+      text: 'Getting started only takes a few minutes. Enter your name, email, and phone number, and your account is ready - protected by two-factor authentication from the moment it is created.',
+      cta: 'Start now',
+    },
+    {
+      n: 'STEP 2',
+      icon: 'wallet',
+      green: true,
+      title: 'Deposit Funds',
+      text: 'Begin with as little as $250. We support credit and debit cards, bank transfers, and leading e-wallets, and deposits reach your account within minutes - no waiting around, no hidden charges.',
+      cta: 'Deposit now',
+    },
+    {
+      n: 'STEP 3',
+      icon: 'chart',
+      title: 'Start Trading',
+      text: 'Let the AI trade fully automatically, or take the manual route - the decision is yours. {brand} watches the markets 24/7, places trades on your behalf when automated mode is on, and keeps your balance up to date in real time.',
+      cta: 'Get started',
+    },
+  ],
+  strip: [
+    'Zero hidden fees',
+    'Withdraw whenever you like',
+    'No monthly subscriptions',
+    'Leave when you want',
+  ],
 }
 
 export const TESTIMONIALS = {
@@ -144,4 +308,4 @@ export const RISK_TEXT =
   'Trading FX, CFDs and Cryptocurrencies involves high risk and may not be suitable for all investors. ' +
   'You could lose some or all of your initial deposit. Never trade with money you cannot afford to lose. ' +
   'This website is for informational purposes only and does not constitute financial advice. ' +
-  'Names, images and testimonials are used for illustration. We may receive referral commissions.'
+  'We may receive referral commissions.'

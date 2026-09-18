@@ -2,12 +2,13 @@ import { useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import 'intl-tel-input/styles'
 import Icon from './Icon'
+import PaymentMarks from './PaymentMarks'
 import { useCampaign } from '../App'
 import { FORM_ENDPOINT } from '../data/content'
 
 const STATUS = { idle: 'idle', loading: 'loading', success: 'success', error: 'error' }
 
-const initialFields = { firstName: '', lastName: '', email: '', consent: true }
+const initialFields = { firstName: '', lastName: '', email: '' }
 
 // Resolve the visitor's country from their IP, trying CORS-open services
 // in order. ipapi.co Cloudflare-blocks localhost, so ipwho.is leads the
@@ -36,15 +37,14 @@ async function resolveCountry() {
 
 /**
  * Registration form (hero + final CTA):
- * - required first/last name, email, valid international phone, 18+ and
- *   terms consent
+ * - required first/last name, email, valid international phone
  * - honeypot "website" field: bots that fill it get silently dropped
  * - phone field shows flag + dial code + placeholder immediately (light
  *   chunk); libphonenumber utils load on first focus or after 4s idle
  * - POSTs JSON {firstName, lastName, email, phone, offerName, subid}
  *   with the phone in full international format
  */
-export default function RegistrationForm({ idPrefix = 'reg', title }) {
+export default function RegistrationForm({ idPrefix = 'reg', title, sub, cta = 'Start now' }) {
   const navigate = useNavigate()
   const location = useLocation()
   const { offerName, subid } = useCampaign()
@@ -197,6 +197,7 @@ export default function RegistrationForm({ idPrefix = 'reg', title }) {
   return (
     <div className="form-card">
       {title && <h2 className="form-card__title">{title}</h2>}
+      {sub && <p className="form-card__sub">{sub}</p>}
       <form onSubmit={handleSubmit} noValidate={false}>
         {/* Honeypot - hidden from real users, bots fill it and get dropped */}
         <input
@@ -211,7 +212,7 @@ export default function RegistrationForm({ idPrefix = 'reg', title }) {
 
         <div className="form-row">
           <label className="form-field">
-            <span>First Name *</span>
+            <span>First Name</span>
             <input
               id={`${idPrefix}-first`}
               type="text"
@@ -224,7 +225,7 @@ export default function RegistrationForm({ idPrefix = 'reg', title }) {
             />
           </label>
           <label className="form-field">
-            <span>Last Name *</span>
+            <span>Last Name</span>
             <input
               id={`${idPrefix}-last`}
               type="text"
@@ -239,7 +240,7 @@ export default function RegistrationForm({ idPrefix = 'reg', title }) {
         </div>
 
         <label className="form-field">
-          <span>Email Address *</span>
+          <span>Email Address</span>
           <input
             id={`${idPrefix}-email`}
             type="email"
@@ -253,7 +254,7 @@ export default function RegistrationForm({ idPrefix = 'reg', title }) {
         </label>
 
         <div className="form-field">
-          <span>Phone Number *</span>
+          <span>Phone Number</span>
           <div className="phone-iti">
             <input
               ref={phoneInputRef}
@@ -269,35 +270,22 @@ export default function RegistrationForm({ idPrefix = 'reg', title }) {
           {phoneError && <span className="phone-error">{phoneError}</span>}
         </div>
 
-        <label className="form-consent">
-          <input
-            type="checkbox"
-            name="age-consent"
-            checked={fields.consent}
-            onChange={setField('consent')}
-            required
-          />
-          <span>
-            By registering, you confirm that you are over 18 years old and agree to the{' '}
-            <a href="/terms" target="_blank" rel="noreferrer">Terms of Use</a>,{' '}
-            <a href="/privacy" target="_blank" rel="noreferrer">Privacy Policy</a>, and{' '}
-            <a href="/risk-disclosure" target="_blank" rel="noreferrer">Risk Disclaimer</a>.
-          </span>
-        </label>
-
         {status === STATUS.error && (
-          <div className="form-error" role="alert">
+          <div className="form-message err" role="alert">
             Something went wrong. Please try again shortly.
           </div>
         )}
 
         <button className="btn btn--primary btn--block" type="submit" disabled={status === STATUS.loading}>
-          {status === STATUS.loading ? 'Processing…' : 'Start now'}
+          {status === STATUS.loading ? 'Processing…' : cta}
+          {status !== STATUS.loading && <Icon name="arrow-right" size={16} strokeWidth={2.2} />}
         </button>
-        <p className="form-trust">
-          <Icon name="lock" size={13} strokeWidth={2.2} />
-          Your data is protected with 256-bit SSL encryption
+        <p className="legal">
+          By entering your personal information and clicking the button, you accept the{' '}
+          <a href="/privacy" target="_blank" rel="noreferrer">Privacy Policy</a> and{' '}
+          <a href="/terms" target="_blank" rel="noreferrer">Terms of Use</a> of the website.
         </p>
+        <PaymentMarks />
       </form>
     </div>
   )
