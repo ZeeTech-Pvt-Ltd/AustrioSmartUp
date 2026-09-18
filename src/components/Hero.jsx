@@ -13,9 +13,6 @@ export default function Hero() {
       <div className="container hero__grid">
         <div className="hero__copy">
           <Reveal>
-            <span className="eyebrow">
-              <Icon name="star" size={12} /> {HERO.eyebrow}
-            </span>
             <h1>
               {fillBrand(HERO.title[0], brand)}
               <span className="grad-text">{HERO.title[1]}</span>

@@ -22,7 +22,6 @@ export const FORM_ENDPOINT = 'https://apexai-experts.com/homeMailAction.php'
 export const DEFAULT_OFFER_NAME = 'SkvivrelanATOM'
 
 export const HERO = {
-  eyebrow: 'Chosen by traders worldwide',
   title: ['{brand} ', 'Automated Trading Platform'],
   lede: '{brand} brings AI-powered strategies, live market signals and dependable security together in one straightforward place - a smart trading platform built for every experience level.',
   bullets: [
