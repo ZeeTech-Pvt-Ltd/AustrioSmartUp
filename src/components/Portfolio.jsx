@@ -13,9 +13,12 @@ export default function Portfolio() {
         <Reveal className="exp-visual">
           <div className="exp-media" aria-hidden="true">
             <img
-              src="https://images.unsplash.com/photo-1589560989620-61bf48e97abb?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              src="https://images.unsplash.com/photo-1589560989620-61bf48e97abb?q=70&w=1120&h=747&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt=""
+              width="1120"
+              height="747"
               loading="lazy"
+              decoding="async"
             />
           </div>
           <div className="exp-badge b2">
